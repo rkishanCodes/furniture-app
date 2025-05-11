@@ -1,0 +1,37 @@
+.furniture-item {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: grab;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.furniture-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.furniture-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.furniture-details h3 {
+  margin: 0 0 5px 0;
+  font-size: 16px;
+}
+
+.furniture-details p {
+  margin: 2px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.furniture-price {
+  font-weight: bold;
+  color: #4caf50;
+}
