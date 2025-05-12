@@ -3,7 +3,7 @@ import { FurnitureContext } from "../context/FurnitureContext";
 import "./FurnitureItem.css";
 
 const FurnitureItem = ({ item }) => {
-  const { selectFurniture } = useContext(FurnitureContext);
+  const { selectFurniture, placeFurniture } = useContext(FurnitureContext);
 
   const handleDragStart = (e) => {
     // Set data to be transferred
@@ -17,11 +17,18 @@ const FurnitureItem = ({ item }) => {
     selectFurniture(item);
   };
 
+  const handleItemClick = () => {
+    const defaultX = 250;
+    const defaultY = 200;
+    placeFurniture(item, { x: defaultX, y: defaultY });
+  };
+
   return (
     <div
       className="furniture-item"
       draggable={true}
       onDragStart={handleDragStart}
+      onClick={handleItemClick}
     >
       <img src={item.imageUrl} alt={item.name} className="furniture-image" />
       <div className="furniture-details">

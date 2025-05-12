@@ -8,29 +8,31 @@ export const furnitureData = [
     depth: 90,
     price: 899.99,
     imageUrl:
-      "https://t3.ftcdn.net/jpg/07/40/34/58/360_F_740345897_j6oTRVOF0VFeo7HN04zTNrZApg7z3vTs.jpg",
+      "https://media-hosting.imagekit.io/8e9377f17b234324/shopping%20Background%20Removed.png?Expires=1841674622&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=IS9o9-RCaGJVfgv6N-tCDlUSQR2ZXRKONwrFWfsoKsn22InMdaycZMniRPaV54AlLbpwz~SiW-1GR-m3T46GhzhPW04vuc41L4vdLewppBCC7DXq26uQfM9FcmmU~HHr4xDjtI3WA4ETziINHfsnokrvd2yt6koDSP273DKM9vjI5sBo-LGyhLi3GjEXk4XdWX~jIJLq5BxZFLRNSE9MSMGx~3ewBiIiZfrssLMOzWuq9l6dZW9T2hJODdQcEkrEM8Qe3~oK7mtjdAQvUHRw8e4uFoZGrexANerjYgAPMUEZTtw1QJcKI0JoGDB8KEPiQK25UGAEdNzeEQBxXSlucA__",
     dimensions: "200cm × 80cm",
   },
   {
     id: 2,
-    name: "Coffee Table",
+    name: "Dining Table",
     category: "Tables",
-    width: 120,
-    height: 40,
-    depth: 60,
-    price: 299.99,
-    imageUrl: "/api/placeholder/120/60",
-    dimensions: "120cm × 60cm",
+    width: 160,
+    height: 75,
+    depth: 90,
+    price: 599.99,
+    imageUrl:
+      "https://media-hosting.imagekit.io/60dfc839120d4436/Dining%20Table%20Background%20Removed.png?Expires=1841674622&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=1MoAvPvLIqGxIT8cXNfQEHSFVTg3P8ZhRX6LkjB4z7ph5WYx07dotN99iuFNJzMLB4pndZPAeLZxqGgzurOKK3yL~UfG8tyk0vE1nNoJw0mRVfjpEQcm3dYAt7LHjPY3pg6ok2KXEOlAPM8q~PdT9w9pWgVpxHlNESglKJm0oMITtu2qBZDLzzOGFdAgp4-9-31zr-sBBsWDsP2uEvWtf5~yLLwFLRsxSGRbrHoGD2amudpuI6latEJTrg7dk3d6j9FEXkviYJfmxKch0u2V8X1mBCSrFrlKQPJ5KlBsJvhNJoXb3qUPK2YznbyEbHYWqso12DkW3B09crguGUzbxQ__",
+    dimensions: "160cm × 90cm",
   },
   {
     id: 3,
     name: "Armchair",
     category: "Seating",
     width: 90,
-    height: 95,
+    height: 100,
     depth: 85,
     price: 499.99,
-    imageUrl: "/api/placeholder/90/85",
+    imageUrl:
+      "https://media-hosting.imagekit.io/d54b8f33a11e4893/Armchair%20Background%20Removed.png?Expires=1841674622&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=Ciiz8YK5~QGNofBgbZ4KdpKoXmorJpzVStURI~VNYyYoExy1HDG14cyVZ897mZtniCjqKr47JxFopo34S6jvcHL4SEY1Kidt8Z-lQcePYCUbuEFQ1GjdbhUpSopKgZS6RrWER7AkdIFctPnGhaTJAasBp~U8SL08aK5KmU8nSU6D448ivDqq4o87AKGowP6a59xI2McuZV2EnyN~6H653nAvsQBRFj9fI516b23YrUvk44P7NBQgqYSxjjHXO4WGAFx6CfwIn9Tz2ZnJfzCadhSyi6viNXKJ50nRMUbjlqHEr9eb8VIvAWxQ8zpsQ4piNzosVWq1WLrC~roILOMgOg__",
     dimensions: "90cm × 85cm",
   },
   {
@@ -41,20 +43,25 @@ export const furnitureData = [
     height: 150,
     depth: 30,
     price: 129.99,
-    imageUrl: "/api/placeholder/30/30",
+    imageUrl:
+      "https://media-hosting.imagekit.io/4e203781a75844a5/lamp%20Background%20Removed.png?Expires=1841674622&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=X~HNGSl8XbnJnWs2yrSvrWsiDZ~BTpUPkRkslhjiAJ6FZTNnATPI8wiNwg~uTIZMggcph2km9-vRJezaDyOKZJLHfCmr5Y7PWip5lNfg~-gTe3kc38mcZQX3Bq~xqeYG3bO3q7ASPoEvcHGxftXxWa1jZin4GBleOmy4UqghPmSHb81jZy6VcVV81a994v3l07AGFEtKURRJz2HRfL3TSOqeTIIInXqpP92FhbEoumUcXXoEcNU0GkXH37jHz7BIY0kCAXmnx5jHWv1UpvU0iff503wyyzPZ~AEBCZHpOO2mzedAvSeN1K0gzWUhylc0HGW~POGgu5xo0zy3r31HTw__",
     dimensions: "30cm × 30cm",
   },
+
+  
   {
     id: 5,
-    name: "Dining Table",
+    name: "Coffee Table",
     category: "Tables",
-    width: 160,
-    height: 75,
-    depth: 90,
-    price: 599.99,
-    imageUrl: "/api/placeholder/160/90",
-    dimensions: "160cm × 90cm",
+    width: 120,
+    height: 40,
+    depth: 60,
+    price: 299.99,
+    imageUrl:
+      "https://t3.ftcdn.net/jpg/07/40/34/58/360_F_740345897_j6oTRVOF0VFeo7HN04zTNrZApg7z3vTs.jpg",
+    dimensions: "120cm × 60cm",
   },
+
   {
     id: 6,
     name: "Dining Chair",
