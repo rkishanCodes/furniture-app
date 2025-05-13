@@ -1,40 +1,45 @@
-import React, { useContext } from "react";
-import { FurnitureContext } from "../context/FurnitureContext";
-import "./FurnitureItem.css";
+import React from "react";
+import { useDispatch } from "react-redux";
+import {
+  selectFurniture,
+  placeFurniture,
+} from "../store/slices/furnitureSlice";
 
 const FurnitureItem = ({ item }) => {
-  const { selectFurniture, placeFurniture } = useContext(FurnitureContext);
+  const dispatch = useDispatch();
 
   const handleDragStart = (e) => {
-    // Set data to be transferred
     e.dataTransfer.setData("furniture", JSON.stringify(item));
-    // Set the drag image (optional)
     const dragImage = new Image();
     dragImage.src = item.imageUrl;
     e.dataTransfer.setDragImage(dragImage, item.width / 2, item.height / 2);
-
-    // Select the furniture item in context
-    selectFurniture(item);
+    dispatch(selectFurniture(item));
   };
 
   const handleItemClick = () => {
     const defaultX = 250;
     const defaultY = 200;
-    placeFurniture(item, { x: defaultX, y: defaultY });
+    dispatch(placeFurniture({ item, position: { x: defaultX, y: defaultY } }));
   };
 
   return (
     <div
-      className="furniture-item"
+      className="bg-gray-100 rounded-lg p-3 shadow-md cursor-grab transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg"
       draggable={true}
       onDragStart={handleDragStart}
       onClick={handleItemClick}
     >
-      <img src={item.imageUrl} alt={item.name} className="furniture-image" />
-      <div className="furniture-details">
-        <h3>{item.name}</h3>
-        <p>{item.dimensions}</p>
-        <p className="furniture-price">${item.price}</p>
+      <div className="w-full h-40 flex items-center justify-center bg-gray-100 rounded mb-3">
+        <img
+          src={item.imageUrl}
+          alt={item.name}
+          className="max-w-full max-h-full object-contain"
+        />
+      </div>
+      <div className="text-center">
+        <h3 className="text-base font-semibold mb-1">{item.name}</h3>
+        <p className="text-sm text-gray-600 mb-1">{item.dimensions}</p>
+        <p className="text-sm font-bold text-green-600">${item.price}</p>
       </div>
     </div>
   );

@@ -1,10 +1,13 @@
-import React, { useState, useContext, useRef } from "react";
-import { FurnitureContext } from "../context/FurnitureContext";
+import React, { useState, useRef } from "react";
+import { useDispatch } from "react-redux";
+import {
+  updateFurniturePosition,
+  removePlacedFurniture,
+} from "../store/slices/furnitureSlice";
 import "./DraggableFurniture.css";
 
 const DraggableFurniture = ({ item }) => {
-  const { updateFurniturePosition, removePlacedFurniture } =
-    useContext(FurnitureContext);
+  const dispatch = useDispatch();
   const [isDragging, setIsDragging] = useState(false);
   const furnitureRef = useRef(null);
 
@@ -40,11 +43,16 @@ const DraggableFurniture = ({ item }) => {
     const newX = e.clientX - canvasRect.left - dragOffset.x;
     const newY = e.clientY - canvasRect.top - dragOffset.y;
 
-    // Update the position
-    updateFurniturePosition(item.id, {
-      x: newX + item.width / 2,
-      y: newY + item.height / 2,
-    });
+    // Update the position in Redux store
+    dispatch(
+      updateFurniturePosition({
+        id: item.id,
+        newPosition: {
+          x: newX + item.width / 2,
+          y: newY + item.height / 2,
+        },
+      })
+    );
   };
 
   const handleDragEnd = () => {
@@ -52,7 +60,7 @@ const DraggableFurniture = ({ item }) => {
   };
 
   const handleDoubleClick = () => {
-    removePlacedFurniture(item.id);
+    dispatch(removePlacedFurniture(item.id));
   };
 
   return (

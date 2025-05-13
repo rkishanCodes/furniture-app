@@ -1,19 +1,28 @@
-import React, { useContext, useRef, useState } from "react";
-import { FurnitureContext } from "../context/FurnitureContext";
+import React, { useRef, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import Room from "./Room";
 import DraggableFurniture from "./DraggableFurniture";
 import "./PlacementCanvas.css";
+import {
+  selectSelectedFurniture,
+  selectPlacedFurniture,
+  placeFurniture,
+  saveDesign,
+} from "../store/slices/furnitureSlice";
 
 const PlacementCanvas = () => {
-  const { selectedFurniture, placeFurniture, placedFurniture } =
-    useContext(FurnitureContext);
+  const selectedFurniture = useSelector(selectSelectedFurniture);
+  const placedFurniture = useSelector(selectPlacedFurniture);
+  const dispatch = useDispatch();
+
+  console.log(placedFurniture);
+
   const canvasRef = useRef(null);
   const [roomDimensions, setRoomDimensions] = useState({
     width: 500,
     height: 400,
   });
   const [designName, setDesignName] = useState("My Room Design");
-  const { saveDesign } = useContext(FurnitureContext);
   const [backgroundImage, setBackgroundImage] = useState(null);
 
   const handleDrop = (e) => {
@@ -29,7 +38,12 @@ const PlacementCanvas = () => {
 
     // If the furniture is coming from the catalog (not already placed)
     if (selectedFurniture && !e.dataTransfer.getData("text/plain")) {
-      placeFurniture(selectedFurniture, { x, y });
+      dispatch(
+        placeFurniture({
+          item: selectedFurniture,
+          position: { x, y },
+        })
+      );
     }
   };
 
@@ -38,8 +52,9 @@ const PlacementCanvas = () => {
   };
 
   const handleSaveDesign = () => {
-    const saved = saveDesign(designName);
-    alert(`Design "${saved.name}" saved!`);
+    const saved = dispatch(saveDesign(designName));
+    console.log(saved);
+    alert(`Design "${designName}" saved!`);
   };
 
   const handleBackgroundImageChange = (e) => {
@@ -67,9 +82,18 @@ const PlacementCanvas = () => {
         </button>
       </div>
 
+      <div className="total-price">
+        <strong>Total Price:</strong> ₹
+        {placedFurniture.reduce((total, item) => total + item.price, 0).toFixed(2)}
+      </div>
+
       <div className="mb-4">
         <label className="mr-2">Upload Room Background:</label>
-        <input type="file" accept="image/*" onChange={handleBackgroundImageChange} />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleBackgroundImageChange}
+        />
       </div>
 
       <div
