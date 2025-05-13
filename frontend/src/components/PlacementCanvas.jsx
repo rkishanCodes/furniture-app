@@ -7,8 +7,10 @@ import {
   selectSelectedFurniture,
   selectPlacedFurniture,
   placeFurniture,
-  saveDesign,
 } from "../store/slices/furnitureSlice";
+import DesignSummary from "./DesignSummary";
+
+import  emptyRoom  from "../assets/empty.jpg";
 
 const PlacementCanvas = () => {
   const selectedFurniture = useSelector(selectSelectedFurniture);
@@ -19,11 +21,10 @@ const PlacementCanvas = () => {
 
   const canvasRef = useRef(null);
   const [roomDimensions, setRoomDimensions] = useState({
-    width: 500,
+    width: 700,
     height: 400,
   });
-  const [designName, setDesignName] = useState("My Room Design");
-  const [backgroundImage, setBackgroundImage] = useState(null);
+  const [backgroundImage, setBackgroundImage] = useState(emptyRoom);
 
   const handleDrop = (e) => {
     e.preventDefault();
@@ -51,12 +52,6 @@ const PlacementCanvas = () => {
     e.preventDefault(); // Necessary to allow dropping
   };
 
-  const handleSaveDesign = () => {
-    const saved = dispatch(saveDesign(designName));
-    console.log(saved);
-    alert(`Design "${designName}" saved!`);
-  };
-
   const handleBackgroundImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -67,26 +62,7 @@ const PlacementCanvas = () => {
 
   return (
     <div className="placement-canvas-container">
-      <h2>Room Design</h2>
-
-      <div className="design-controls">
-        <input
-          type="text"
-          value={designName}
-          onChange={(e) => setDesignName(e.target.value)}
-          placeholder="Design Name"
-          className="design-name-input"
-        />
-        <button onClick={handleSaveDesign} className="save-design-btn">
-          Save Design
-        </button>
-      </div>
-
-      <div className="total-price">
-        <strong>Total Price:</strong> ₹
-        {placedFurniture.reduce((total, item) => total + item.price, 0).toFixed(2)}
-      </div>
-
+      <DesignSummary/>
       <div className="mb-4">
         <label className="mr-2">Upload Room Background:</label>
         <input

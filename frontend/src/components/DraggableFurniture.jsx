@@ -1,8 +1,9 @@
 import React, { useState, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   updateFurniturePosition,
   removePlacedFurniture,
+  selectQuantities,
 } from "../store/slices/furnitureSlice";
 import "./DraggableFurniture.css";
 
@@ -10,6 +11,11 @@ const DraggableFurniture = ({ item }) => {
   const dispatch = useDispatch();
   const [isDragging, setIsDragging] = useState(false);
   const furnitureRef = useRef(null);
+  const quantities = useSelector(selectQuantities);
+
+  // Extract the original item ID from the placed furniture ID
+  const originalItemId = item.id.split("-")[1];
+  const currentQuantity = quantities[originalItemId] || 0;
 
   // Track the initial click position relative to the furniture item
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
@@ -84,6 +90,12 @@ const DraggableFurniture = ({ item }) => {
     >
       <div className="furniture-tooltip">
         {item.name}
+        <br />
+        {currentQuantity > 1 && (
+          <span>
+            Item {currentQuantity} of {currentQuantity}
+          </span>
+        )}
         <br />
         Double-click to remove
       </div>

@@ -67,10 +67,10 @@ const Header = () => {
 
   return (
     <header className="bg-white shadow-md py-3 px-6 flex flex-col md:flex-row items-center justify-between">
-      <div className="flex items-center gap-2">
+      <Link className="flex items-center gap-2" to="/">
         <img src={logo} alt="Logo" className="h-12 w-12 object-contain" />
         <span className="text-xl font-semibold text-gray-800">FurniPlace</span>
-      </div>
+      </Link>
       <nav className="mt-3 md:mt-0">
         <ul className="flex flex-col md:flex-row items-center gap-4 text-gray-600">
           {authLinks.map((item) =>
